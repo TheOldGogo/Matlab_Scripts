@@ -1,0 +1,29 @@
+<productinfo
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="optional">
+<?xml-stylesheet type="text/xsl" href="optional"?>
+
+<matlabrelease>14</matlabrelease>
+<name>MCR-ALS user friendly interface</name>
+<type>toolbox</type>
+<icon>mcr_logo.gif</icon>
+<help_location>:/matlabfiles/specsim/specsimhelp</help_location>
+
+<list>
+
+<listitem>
+<label>MCR-ALS user friendly interface</label>
+<callback>als2004</callback>
+<icon>mcr_logo.gif</icon>
+</listitem>
+
+
+<listitem>
+<label>MCR-ALS Homepage</label>
+<callback>web http://www.ub.es/gesq/mcr/mcr.htm -browser;</callback>
+<icon>$toolbox/matlab/icons/webicon.gif</icon>
+</listitem>
+
+</list>
+
+</productinfo>
