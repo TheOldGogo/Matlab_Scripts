@@ -1,10 +1,10 @@
-%% 2015_05_26 JG: extract spectra (time, aug_mat, wavelengths, Mestype)
+%% 2015_05_26 JG: extract spectra (time, aug_mat, wavelengths, Mestype, dirname, fname)
 %% 2017_11_19 JG: now saves one file per fluence
 %% 2018_08_27 JG: added the option to extract a triplet reference (Mestype "RT") defaulty set to 5 - 7 ns on SD data
 
 function out = extract_spectra_save(time, aug_mat, wavelengths, Mestype, dirname, fname)
 
-Times_SD = [0.3, 1, 3, 10, 30, 100, 300, 1000, 3000, 8000];
+Times_SD = [0.4, 0.9, 1, 3, 3, 10, 30, 100, 500, 2000, 2000, 6000];
 Times_LD = [3e-10, 4.5e-10, 1e-9, 1.5e-9, 3e-9, 4.5e-9, 1e-8, 1.5e-8, 3e-8, 4.5e-8, 1e-7, 1.5e-7, 3e-7, 4.5e-7, 1e-6, 1.5e-6, 3e-6, 4.5e-6, 1e-5, 1.5e-5, 3e-5, 4.5e-5, 1e-4, 1.5e-4];
 Time_Ref_Exc = [15,30];
 Time_Ref_Tripl = [5000, 7000];
