@@ -5,20 +5,22 @@
 %% 2018 - 02 - 15 JG: change the data sent to aug mat for the first ps: now it is the non-smoothed data (still smoothed for the rest)
 %% 2018 - 06 - 25 JG: accordingly applied the subbackground and zero substraction also to the unsmoothed data
 %% 2018 - 07 - 25 JG: Added the "clearvars - except" option (currently commented line 10) as an alternative to "clear all" (thank you Jafar)
+%% 2019 - 05 - 13 JG: The spectral and temporal boundaries are now entered by actual value instead of pixel number l 157 -> 160 
+%% 2019 - 05 - 13 JG: The time to switch from raw to smoothed data is now oFn a specific line (currently l 130)
 
 %clear all ; 
 %clearvars -except Constr_Spec Ref_Spectra; 
 
 
-sample='TALongSVA';
+sample='OIDTBR';
 timeoffset=0;
 
-dirname='C:\Users\gorenfjf\Documents\MYdocuments\projects\K37\TA\TA20161124_K37_PC70BM_60s_SDBB\Measurements'
+dirname='/home/gorenfjf/Temp_Workspace/DR3 project/DR3_OIDTBR_SD/720nm_excitation/'
 fnames=dir(dirname);                                                        % dir lists the files in directory -> return a structure with file names and infos
 
 j=1;
 for i=1:length(fnames)
-    if strfind(fnames(i).name,'lam.corr')                                   % look in the list the files with matching names
+    if strfind(fnames(i).name,'.cor')                                   % look in the list the files with matching names
         if strfind(fnames(i).name,sample)                                   % goes on
         txtfnames(j)=fnames(i);                                             % saves the file name in 'txtfnames'
         j=j+1;
@@ -45,7 +47,7 @@ D_initial = D;
 %% set the zero times using an SVD to find zero time between -5 and 5 ns, works only for long time data
 
 j=1;
-lam=[0.9 2.2];
+lam=[1 2.5];
 t=[-15 15];
 master_time=data_struc(1).time;
 offset=0;
@@ -125,13 +127,14 @@ figure
 %subplot(2,3,1)
 
 j=1;
+t_raw = 0.8;
 
 for i=1:length(txtfnames)
     
     subplot(3,3,j);
     myplot(data_struc(j),[1.2 3],[-5 5])
     view(2)
-    D_shifted(:,:,j)=[data_struc(j).data(:,data_struc(j).time<=1), data_struc(j).smootheddata(:,data_struc(j).time>1)];  % stored the data in the right order in D_shifted.
+    D_shifted(:,:,j)=[data_struc(j).data(:,data_struc(j).time<=t_raw), data_struc(j).smootheddata(:,data_struc(j).time>t_raw)];  % stored the data in the right order in D_shifted.
     %note: direct data before 1ps, smoothed data after   
     j=j+1;
     
@@ -151,12 +154,12 @@ end
 %lam_min_index = 1;
 %JG: commented because not used (and the next one too)
 %lam_max_index = size(data_struc(1).lam,1);
-t_min = 23;                                                                 % J.G changed from 55 to 29 where my zero approximately is 
-t_max = size(master_time,2);
-w_min = 92;
-w_max = 498%size(data_struc(1).lam);
+t_min = 0;                                                                 % J.G changed from 55 to 29 where my zero approximately is 
+t_max = 8000;
+w_min = 0.82;
+w_max = 3.5;%size(data_struc(1).lam);
 
-D_temp=D_shifted(w_min:w_max,t_min:t_max,:);                                      % J.G. just adjust the data range to suppress NaNs
+D_temp=D_shifted(data_struc(1).lam>=w_min & data_struc(1).lam<w_max,data_struc(1).time>=t_min & data_struc(1).time<t_max,:);                                      % J.G. just adjust the data range to suppress NaNs
 for i=1:size(D,3)                                                           
     % D is defined in line 31. it's a 3 D matrix, 
     % with the 3rd index = sample index
@@ -164,8 +167,8 @@ for i=1:size(D,3)
     % so size(D,3) is simply the number of files loaded
     D_norm(:,:,i)=D_temp(:,:,i)/min(min(D_temp(:,:,i)));
 end
-master_time_reduced_SD = master_time(t_min:t_max);                             % J.G.: not used but usefull for later applications
-master_spectra_reduced_SD = data_struc(1).lam(w_min:w_max);
+master_time_reduced_SD = master_time(data_struc(1).time>=t_min & data_struc(1).time<t_max);                             % J.G.: not used but usefull for later applications
+master_spectra_reduced_SD = data_struc(1).lam(data_struc(1).lam>=w_min & data_struc(1).lam<w_max);
 figure()                                                                    % J.G.: figure was assigned to a "f" but f never used
 hold all
 for k=1:size(D,3)
