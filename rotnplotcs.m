@@ -1,6 +1,7 @@
 %% JG: created on 2019-04-14. If it works it should carry out multiple  
-% rotation of MCR results, display the results
-% and return them in a structure 
+% function out = rotnplotcs(c,s,range, time_axis, spectr_axis)
+% rotation of MCR results (spec 1 rotates around spec 2), display the results
+% and return them in a structure
 % it works
 
 
