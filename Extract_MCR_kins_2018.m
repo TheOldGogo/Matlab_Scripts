@@ -5,8 +5,10 @@ function out = extract_MCR_kins(master_time_reduced, copt, species_Name,...% spe
 
     for i = 1:size(copt,2)
         
-        temp_kins = matrix(copt(:,i),size(master_time_reduced,2),-1);      % put the column array of the ith species as a matrix
-                                                                                %  with one column per fluence
+        %temp_kins = matrix(copt(:,i),size(master_time_reduced,2),-1);      % put the column array of the ith species as a matrix
+        temp_kins = reshape(copt(:,i),size(master_time_reduced,2),[]);                    %  with one column per fluence
+        
+                                                                                
         figure();
         plot(temp_kins);
         title(species_Name(i));

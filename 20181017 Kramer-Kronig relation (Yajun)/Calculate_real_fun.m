@@ -15,7 +15,7 @@
 % omega=load(strcat(path,'Wavelength axis','.txt'));
 % real=load(strcat(path,'PCE10_hITIC_k','.txt'));
 
-function out = Calculate_real_fun(omega,imagi) 
+function out = Calculate_real_fun(omega,real) 
 
 %---initialize the imaginary
 imagi=zeros(length(real),1);
@@ -48,7 +48,7 @@ legend('real','imagi')
 title('Real---->Imagi')
 
 %----output the n indexes
-out = real;
+out = imagi;
 
 end
 
