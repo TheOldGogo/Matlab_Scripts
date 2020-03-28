@@ -1,13 +1,27 @@
 %             Imaginary---->Real ?Yajun Gao, 10-18-2018, KAUST)
 % Calculate the real component from the imaginary component, based on
 %the Kramers-Kronig relation.
+<<<<<<< HEAD
+=======
+% 2019-09-15 JG: added a separate line for loading the directory +
+%               automatized the extension ".txt"
+%                  From my experience it seems like this one actually calculates the
+%               real part, while the "Calculate real" actually calculates the imaginary
+%               part. -> need to change names after discussing with Yajun
+>>>>>>> 028808127a990ffc3507d4ce20d9f572b7814d0c
 
 clear all
 close all
 
 %----load the data, the omega axis and the imaginary component.
+<<<<<<< HEAD
 omega=load('the omega axis.txt');
 imagi=load('the imagi component.txt');
+=======
+path = 'C:\Users\gorenfjf\Documents\Programs stuff\Matlab_Scripts\20181017 Kramer-Kronig relation (Yajun)\Validation tests\'
+omega=load(strcat(path,'Wavelength axis','.txt'));
+imagi=load(strcat(path,'2HT_C70_CBCN_k','.txt'));
+>>>>>>> 028808127a990ffc3507d4ce20d9f572b7814d0c
 
 %---initialize the imaginary
 real=zeros(length(omega),1);
