@@ -17,7 +17,7 @@
 
 % This program calculates the field profile, exciton generation profile
 % and generated current from the wavelength dependent complex indicies of
-% refraction in devices using the transfer matrix method. It assumes the light source
+% refraction in devices using the transfer matrix method. It assumes the 
 % light source is in an n=1 environment (air) and that the first layer is
 % a thick superstrate, so that incoherent reflection from the air/1st layer
 % interface is taken into account before the coherent interference is
@@ -42,12 +42,13 @@
 % Modifications:
 % 3/3/11 Parastic absorption (parasitic_abs) is calculated and made
 % accessable outside of script. 
+% 18/12/19 JG: output generation rate in the active layer ("Gx")
 
 
 function TransferMatrix
 %------------BEGIN USER INPUT PARAMETERS SPECITIFCATION---------------
 %
-lambda=300:800; % Wavelengths over which field patterns are calculated
+lambda=300:850; % Wavelengths over which field patterns are calculated
 stepsize = 1;   % The electric field is calculated at a latice of points (nm)
                 % in the device cross section seperated by this distance
 
@@ -56,7 +57,7 @@ stepsize = 1;   % The electric field is calculated at a latice of points (nm)
 % values to the array. Values must be within the range of calculated
 % wavelenths (ie. must be an element of the lambda array). All wavelengths
 % are in nanometers.
-plotWavelengths = [350 400 450 500 532 600 650 700 750 800];
+plotWavelengths = [532 750 800];
 
 % Specify Layers in device (an arbitrary number of layers is permitted) and 
 % thicknesses.
@@ -70,8 +71,8 @@ plotWavelengths = [350 400 450 500 532 600 650 700 750 800];
 % layers are on the reflective electrode (rather than transparent electrode) side 
 % of the device.  The layer thicknesses are in nanometers.
 
-layers = {'SiO2_test' 'ITOsorizon' 'PEDOT' 'P2HC70_CBCN' 'Ca' 'Al'}; % Names of layers of materials starting from side light is incident from
-thicknesses = [0 150 35 72 7 120];  % thickness of each corresponding layer in nm (thickness of the first layer is irrelivant)
+layers = {'SiO2' 'ITOsorizon' 'ZnO' 'PBDTTS1_P2TPDBT2FT' 'MoOx' 'Ag'}; % Names of layers of materials starting from side light is incident from
+thicknesses = [0 109 35 85 7 100];  % thickness of each corresponding layer in nm (thickness of the first layer is irrelivant)
 
 % Set plotGeneration to 'true' if you want to plot generation rate as a
 % function of position in the device and output the calculated short circuit current
@@ -132,7 +133,8 @@ for l = 1:length(lambda)
         for matindex=material:(length(t)-1)
             S_doubleprime=S_doubleprime*I_mat(n(matindex,l),n(matindex+1,l))*L_mat(n(matindex+1,l),t(matindex+1),lambda(l));
         end
-        % Normalized Field profile (JAP Vol 86 p.487 Eq 22)
+        % Normalized Field profile (JAP Vol 86 p.487 Eq 22)  
+        % JG: actually it's eq. 21. p 490
         E(x_indices,l)=T(l)*(S_doubleprime(1,1)*exp(-1i*xi*(dj-x))+S_doubleprime(2,1)*exp(1i*xi*(dj-x))) ./(S_prime(1,1)*S_doubleprime(1,1)*exp(-1i*xi*dj)+S_prime(1,2)*S_doubleprime(2,1)*exp(1i*xi*dj));
     end 
 end
@@ -169,7 +171,7 @@ legend(legendString);
 % Absorption coefficient in cm^-1 (JAP Vol 86 p.487 Eq 23)
 a=zeros(length(t),length(lambda));
 for matindex=2:length(t)
-     a(matindex,:)=4*pi*imag(n(matindex,:))./(lambda*1e-7);
+     a(matindex,:)=4*pi*imag(n(matindex,:))./(lambda*1e-7)
 end
 
 % Plots normalized intensity absorbed /cm3-nm at each position and
@@ -196,12 +198,12 @@ legend(layers{2:size(layers,2)}, 'Reflectance');
 if plotGeneration == true
     
     % Load in 1sun AM 1.5 solar spectrum in mW/cm2nm
-    AM15_data=xlsread('C:\Users\gorenfjf\Documents\Programs stuff\Transfer matrix multilayer simulator\AM15.xls');
+    AM15_data=xlsread('C:\Users\gorenfjf\Documents\Programs stuff\Matlab_Scripts\Transfer matrix multilayer simulator\AM15.xls');
     AM15=interp1(AM15_data(:,1), AM15_data(:,2), lambda, 'linear', 'extrap');
 
     figure(3)
     % Energy dissipation mW/cm3-nm at each position and wavelength (JAP Vol
-    % 86 p.487 Eq 22)
+    % 86 p.490 Eq 22)
     ActivePos=find(x_mat == activeLayer);
     Q=repmat(a(activeLayer,:).*real(n(activeLayer,:)).*AM15,length(ActivePos),1).*(abs(E(ActivePos,:)).^2);
 
@@ -239,6 +241,7 @@ if plotGeneration == true
     assignin('base','reflection',Reflection');
     assignin('base','parasitic_abs',parasitic_abs);
     assignin('base','lambda',lambda');
+    assignin('base','Gx', Gx);
 end
 
 %------------------- Helper Functions ------------------------------------
@@ -268,7 +271,7 @@ L=[exp(-1i*xi*d) 0; 0 exp(1i*xi*d)];
 function ntotal = LoadRefrIndex(name,wavelengths)
 
 %Data in IndRefr, Column names in IndRefr_names
-[IndRefr,IndRefr_names]=xlsread('C:\Users\gorenfjf\Documents\Programs stuff\Transfer matrix multilayer simulator\Index_of_Refraction_library.xls');
+[IndRefr,IndRefr_names]=xlsread('C:\Users\gorenfjf\Documents\MYdocuments\projects\Ahmed_AllPolymers\Ahmed_s_all_polymer_paper\Submission to AEM\Revision\Refractive_indexes.xls');
 
 % Load index of refraction data in spread sheet, will crash if misspelled
 file_wavelengths=IndRefr(:,strmatch('Wavelength',IndRefr_names));

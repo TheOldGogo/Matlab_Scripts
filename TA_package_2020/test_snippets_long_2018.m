@@ -9,14 +9,14 @@
 %% 2018 - 11 - 18 JG: added the "clearvars -except" instead of "clear all". thank you Jafar.
 
 
-clear all;
-%clearvars -except Ref_PBDBT_SF master_spectra_reduced_1 Ref_IT4F
+%clear all;
+clearvars -except MCR_Result Ref
 %master_spectra_reduced_Ac;
 
-sample='K37_10s_LDBB';
+sample='PCE10-PSM95';
 timeoffset=0;
 
-dirname='/datawaha/ufd/Exchanges/JulienWithHimself/DataSample';
+dirname='C:\Users\gorenfjf\Documents\MYdocuments\projects\h-ITIC\XP\TA\VisTA_PSM95\PCE10-PSM95_LD';
 fnames=dir(dirname);
 
 j=1;
@@ -34,7 +34,7 @@ for i=1:length(txtfnames)
     
     data_struc(j)=txt2strucfun([dirname filesep() txtfnames(j).name]);
     
-    data_struc(j)=subbackground_LD2018(data_struc(j),[-1e-7 -1e-8], [2.1 4.0]);            
+    data_struc(j)=subbackground_LD_noFlip(data_struc(j),[-1e-7 -1e-8]);            
     data_struc(j).time=data_struc(j).time+timeoffset;
     D(:,:,j)=data_struc(j).smootheddata;
     if sum(data_struc(j).lam == data_struc(1).lam) == size(data_struc(1).lam,1)
@@ -135,7 +135,7 @@ j=1;
 
 for i=1:length(txtfnames)
     
-    subplot(3,3,j);
+    subplot(3,4,j);
     myplot(data_struc(j),[0.7 2.4],[-5e-9 5e-9])
     view(2)
     D_shifted(:,:,j)=[data_struc(j).data(:,data_struc(j).time<=0.9e-9), data_struc(j).smootheddata(:,data_struc(j).time>0.9e-9)];
@@ -145,9 +145,9 @@ end
 
 %% make a normalized version of D
 lam_min_index = 18;
-lam_max_index = size(data_struc(1).lam,1);
-t_min_index = 17;
-t_max_index = 157;%size(master_time,2);
+lam_max_index = 290; %size(data_struc(1).lam,1);
+t_min_index = 12;
+t_max_index = 97;%size(master_time,2);
 
 D_temp=D_shifted(lam_min_index:lam_max_index,t_min_index:t_max_index,:);
 for i=1:size(D,3)
@@ -158,9 +158,9 @@ master_spectra_reduced = data_struc(1).lam(lam_min_index:lam_max_index);
 figure()
 hold all
 for k=1:size(D,3)
-    plot(master_time,D_shifted(200,:,k))
-    plot(master_time, data_struc(k).data(200,:))
-    plot(master_time, data_struc(k).smootheddata(200,:))
+    plot(master_time,D_shifted(90,:,k))
+    plot(master_time, data_struc(k).data(90,:))
+    plot(master_time, data_struc(k).smootheddata(90,:))
     axis([-5e-9, 5e-9, -Inf, inf]);
 end
 

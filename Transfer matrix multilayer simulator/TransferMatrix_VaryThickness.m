@@ -1,4 +1,4 @@
-% Copyright 2010 George F. Burkhard, Eric T. Hoke, Stanford University
+%% Copyright 2010 George F. Burkhard, Eric T. Hoke, Stanford University
 
 %     This program is free software: you can redistribute it and/or modify
 %     it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@
 function TransferMatrix_VaryThickness
 %------------BEGIN USER INPUT PARAMETERS SPECITIFCATION---------------
 %
-lambda=350:5:800; % Wavelengths over which field patterns are calculated
+lambda=370:5:900; % Wavelengths over which field patterns are calculated
 stepsize = 1;   % The electric field is calculated at a latice of points (nm)
                 % in the device cross section seperated by this distance
 
@@ -45,8 +45,8 @@ stepsize = 1;   % The electric field is calculated at a latice of points (nm)
 % layers are on the reflective electrode (rather than transparent electrode) side 
 % of the device.  The layer thicknesses are in nanometers.
 
-layers = {'SiO2' 'ITOsorizon' 'PEDOT' 'PTB7PCBM' 'Ca' 'Al'}; % Names of layers of materials starting from side light is incident from
-thicknesses = [0 100 40 400 5 100];  % thickness of each corresponding layer in nm (thickness of the first layer, and layer which thickness is varied is irrelivant)
+layers = {'SiO2' 'ITOsorizon' 'ZnO' 'PCE10_IEICO4F' 'MoOx' 'Ag'}; % Names of layers of materials starting from side light is incident from
+thicknesses = [0 110 55 90 7 100];  % thickness of each corresponding layer in nm (thickness of the first layer, and layer which thickness is varied is irrelivant)
 
 % Set plotGeneration to 'true' if you want to plot generation rate as a
 % function of position in the device and output the calculated short circuit current
@@ -66,7 +66,9 @@ AM15=interp1(AM15_data(:,1), AM15_data(:,2), lambda, 'linear', 'extrap');
 % Load in index of refraction for each material
 n = zeros(size(layers,2),size(lambda,2));
 for index = 1:size(layers,2)
+    index
     n(index,:) = LoadRefrIndex(layers{index},lambda);
+    index
 end
 
 % Constants
@@ -182,7 +184,7 @@ L=[exp(-1i*xi*d) 0; 0 exp(1i*xi*d)];
 function ntotal = LoadRefrIndex(name,wavelengths)
 
 %Data in IndRefr, Column names in IndRefr_names
-[IndRefr,IndRefr_names]=xlsread('Index_of_Refraction_library.xls');
+[IndRefr,IndRefr_names]=xlsread('C:\Users\gorenfjf\Documents\Programs stuff\Matlab_Scripts\Transfer matrix multilayer simulator\Index_of_Refraction_PCE10IEICO4F.xls')
 
 % Load index of refraction data in spread sheet, will crash if misspelled
 file_wavelengths=IndRefr(:,strmatch('Wavelength',IndRefr_names));

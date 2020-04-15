@@ -1,0 +1,153 @@
+
+mcr_toolbox2/.dropbox
+mcr_toolbox2/.dropbox.attr
+mcr_toolbox2/ALS routines/als2013.fig
+mcr_toolbox2/ALS routines/als2013.m
+mcr_toolbox2/ALS routines/als_info.fig
+mcr_toolbox2/ALS routines/als_info.m
+mcr_toolbox2/ALS routines/als_parameters.fig
+mcr_toolbox2/ALS routines/als_parameters.m
+mcr_toolbox2/ALS routines/als_parameters_reload.fig
+mcr_toolbox2/ALS routines/als_parameters_reload.m
+mcr_toolbox2/ALS routines/als_res.fig
+mcr_toolbox2/ALS routines/als_res.m
+mcr_toolbox2/ALS routines/alsgui.fig
+mcr_toolbox2/ALS routines/alsgui.m
+mcr_toolbox2/ALS routines/alsOptimization.m
+mcr_toolbox2/ALS routines/bilinear_info.fig
+mcr_toolbox2/ALS routines/bilinear_info.m
+mcr_toolbox2/ALS routines/clas3way.fig
+mcr_toolbox2/ALS routines/clas3way.m
+mcr_toolbox2/ALS routines/closure.m
+mcr_toolbox2/ALS routines/closure_no.fig
+mcr_toolbox2/ALS routines/closure_no.m
+mcr_toolbox2/ALS routines/closurels.m
+mcr_toolbox2/ALS routines/columnModeConstraints.fig
+mcr_toolbox2/ALS routines/columnModeConstraints.m
+mcr_toolbox2/ALS routines/columnMultiConstraints.fig
+mcr_toolbox2/ALS routines/columnMultiConstraints.m
+mcr_toolbox2/ALS routines/conctomap3Dscirreg.m
+mcr_toolbox2/ALS routines/correlation_info.fig
+mcr_toolbox2/ALS routines/correlation_info.m
+mcr_toolbox2/ALS routines/correlCons.fig
+mcr_toolbox2/ALS routines/correlCons.m
+mcr_toolbox2/ALS routines/correlCons_reload.fig
+mcr_toolbox2/ALS routines/correlCons_reload.m
+mcr_toolbox2/ALS routines/efa.m
+mcr_toolbox2/ALS routines/efagui.fig
+mcr_toolbox2/ALS routines/efagui.m
+mcr_toolbox2/ALS routines/efard.m
+mcr_toolbox2/ALS routines/eff.m
+mcr_toolbox2/ALS routines/eq2mat_hard.m
+mcr_toolbox2/ALS routines/equations.m
+mcr_toolbox2/ALS routines/fnnls.m
+mcr_toolbox2/ALS routines/gui_conc.m
+mcr_toolbox2/ALS routines/hline.m
+mcr_toolbox2/ALS routines/images_info.fig
+mcr_toolbox2/ALS routines/images_info.m
+mcr_toolbox2/ALS routines/images_plots.fig
+mcr_toolbox2/ALS routines/images_plots.m
+mcr_toolbox2/ALS routines/interesp.m
+mcr_toolbox2/ALS routines/kin_help.fig
+mcr_toolbox2/ALS routines/kin_help.m
+mcr_toolbox2/ALS routines/kinetic_info.fig
+mcr_toolbox2/ALS routines/kinetic_info.m
+mcr_toolbox2/ALS routines/KineticCred.fig
+mcr_toolbox2/ALS routines/KineticCred.m
+mcr_toolbox2/ALS routines/kineticHM.fig
+mcr_toolbox2/ALS routines/kineticHM.m
+mcr_toolbox2/ALS routines/kineticHM_multi.fig
+mcr_toolbox2/ALS routines/kineticHM_multi.m
+mcr_toolbox2/ALS routines/lofquadril.m
+mcr_toolbox2/ALS routines/loftril.m
+mcr_toolbox2/ALS routines/manComp.fig
+mcr_toolbox2/ALS routines/manComp.m
+mcr_toolbox2/ALS routines/manEst.fig
+mcr_toolbox2/ALS routines/manEst.m
+mcr_toolbox2/ALS routines/mcrbandsC/applicons.fig
+mcr_toolbox2/ALS routines/mcrbandsC/applicons.m
+mcr_toolbox2/ALS routines/mcrbandsC/change_opt_param.fig
+mcr_toolbox2/ALS routines/mcrbandsC/change_opt_param.m
+mcr_toolbox2/ALS routines/mcrbandsC/fmaxmin.m
+mcr_toolbox2/ALS routines/mcrbandsC/fmaxmin0.m
+mcr_toolbox2/ALS routines/mcrbandsC/lofr.M
+mcr_toolbox2/ALS routines/mcrbandsC/mcrbands.m
+mcr_toolbox2/ALS routines/mcrbandsC/mcrbands0.m
+mcr_toolbox2/ALS routines/mcrbandsC/mcrbands0b.m
+mcr_toolbox2/ALS routines/mcrbandsC/mcrbands_fr.fig
+mcr_toolbox2/ALS routines/mcrbandsC/mcrbands_fr.m
+mcr_toolbox2/ALS routines/mcrbandsC/mcrbandsg.fig
+mcr_toolbox2/ALS routines/mcrbandsC/mcrbandsg.m
+mcr_toolbox2/ALS routines/mcrbandsC/mcrbandsg_connected.fig
+mcr_toolbox2/ALS routines/mcrbandsC/mcrbandsg_connected.m
+mcr_toolbox2/ALS routines/mcrbandsC/mycons.m
+mcr_toolbox2/ALS routines/mcrbandsC/mycons0.m
+mcr_toolbox2/ALS routines/mcrbandsC/mycons0_old.m
+mcr_toolbox2/ALS routines/mcrbandsC/norm_old.fig
+mcr_toolbox2/ALS routines/mcrbandsC/norm_old.m
+mcr_toolbox2/ALS routines/mcrbandsC/normgui.fig
+mcr_toolbox2/ALS routines/mcrbandsC/normgui.m
+mcr_toolbox2/ALS routines/mcrbandsC/normgui_old.fig
+mcr_toolbox2/ALS routines/mcrbandsC/normgui_old.m
+mcr_toolbox2/ALS routines/mcrbandsC/push_isp.fig
+mcr_toolbox2/ALS routines/mcrbandsC/push_isp.m
+mcr_toolbox2/ALS routines/mcrbandsC/tconv.m
+mcr_toolbox2/ALS routines/mcrbandsC/unimodg.m
+mcr_toolbox2/ALS routines/mcrbandsC/valueg.fig
+mcr_toolbox2/ALS routines/mcrbandsC/valueg.m
+mcr_toolbox2/ALS routines/mcrbandsC/valueg_old.fig
+mcr_toolbox2/ALS routines/mcrbandsC/valueg_old.m
+mcr_toolbox2/ALS routines/mcrbandsC/view_csel.fig
+mcr_toolbox2/ALS routines/mcrbandsC/view_csel.m
+mcr_toolbox2/ALS routines/mlpca.m
+mcr_toolbox2/ALS routines/multiway_parameters.m
+mcr_toolbox2/ALS routines/multiwayC.fig
+mcr_toolbox2/ALS routines/multiwayC.m
+mcr_toolbox2/ALS routines/nglmglob.m
+mcr_toolbox2/ALS routines/nnls.m
+mcr_toolbox2/ALS routines/normv2.m
+mcr_toolbox2/ALS routines/normv3.m
+mcr_toolbox2/ALS routines/opt_kinglob.m
+mcr_toolbox2/ALS routines/optim_info.fig
+mcr_toolbox2/ALS routines/optim_info.m
+mcr_toolbox2/ALS routines/pcarep.m
+mcr_toolbox2/ALS routines/plot_dades.fig
+mcr_toolbox2/ALS routines/plot_dades.m
+mcr_toolbox2/ALS routines/pure.m
+mcr_toolbox2/ALS routines/puregui.fig
+mcr_toolbox2/ALS routines/puregui.m
+mcr_toolbox2/ALS routines/quadril.m
+mcr_toolbox2/ALS routines/quadrilinear_info.fig
+mcr_toolbox2/ALS routines/quadrilinear_info.m
+mcr_toolbox2/ALS routines/rcalcglob.m
+mcr_toolbox2/ALS routines/rowModeConstraints.fig
+mcr_toolbox2/ALS routines/rowModeConstraints.m
+mcr_toolbox2/ALS routines/rowMultiConstraints.fig
+mcr_toolbox2/ALS routines/rowMultiConstraints.m
+mcr_toolbox2/ALS routines/selecvar.fig
+mcr_toolbox2/ALS routines/selecvar.m
+mcr_toolbox2/ALS routines/svd_selection.fig
+mcr_toolbox2/ALS routines/svd_selection.m
+mcr_toolbox2/ALS routines/svdgui.fig
+mcr_toolbox2/ALS routines/svdgui.m
+mcr_toolbox2/ALS routines/trilin.m
+mcr_toolbox2/ALS routines/trilinear_info.fig
+mcr_toolbox2/ALS routines/trilinear_info.m
+mcr_toolbox2/ALS routines/tuck2.m
+mcr_toolbox2/ALS routines/unimod.m
+mcr_toolbox2/ALS routines/weighted.fig
+mcr_toolbox2/ALS routines/weighted.m
+mcr_toolbox2/ALS routines/wmat.m
+mcr_toolbox2/ALS routines/yregr_plotfin.m
+mcr_toolbox2/ALS routines/yregrnew.m
+mcr_toolbox2/desktop.ini
+mcr_toolbox2/HowToMultipleSet1.PNG
+mcr_toolbox2/HowToMultipleSet2.PNG
+mcr_toolbox2/HowToMultipleSet3.PNG
+mcr_toolbox2/HowToMultipleSet4.PNG
+mcr_toolbox2/mcr_main.fig
+mcr_toolbox2/mcr_main.m
+20181017 Kramer-Kronig relation (Yajun)/PCE10_hITIC_k.txt
+20181017 Kramer-Kronig relation (Yajun)/Validation tests/Compare_nKK_nElipso.opju
+20181017 Kramer-Kronig relation (Yajun)/Validation tests/Compare_nKK_nElipso.opju
+20181017 Kramer-Kronig relation (Yajun)/Wavelength axis.txt

@@ -30,15 +30,15 @@ hold all;
 % options.Lower=[0 1.5 0];
 % options.Upper=[1 1.9 0.7];
 
-fname='Gauss2';
-options=fitoptions(fname);
-options.Lower=[   0    1.8     0.1     0         0.9      0.05];
-options.Upper=[   1   2.2    2         1         1.3     .5];
+%fname='Gauss2';
+%options=fitoptions(fname);
+%options.Lower=[   0    1.8     0.1     0         0.9      0.05];
+%options.Upper=[   1   2.2    2         1         1.3     .5];
 
-% fname='Gauss3';
-% options=fitoptions(fname);
-% options.Lower=[    0       2      0.1     0       1.8   0.05     -5e-3    1.3     0.1  ];
-% options.Upper=[    1e-2    2.3    0.5     1e-2    2     0.5      0        1.75   0.6  ];
+ fname='Gauss3';
+ options=fitoptions(fname);
+ options.Lower=[    -1e-2       0.8      0.05     -2e-3       1.3   0.05     0          1.6     0.05  ];
+ options.Upper=[    0           1       0.5          0         2     0.2      2e-3       1.8   0.3  ];
 
 
 % fname='Gauss3';
@@ -81,9 +81,9 @@ for i1=1:length(structin)
          a2(i1,i2)=model.a2;
          b2(i1,i2)=model.b2;
          c2(i1,i2)=model.c2;
-%          a3(i1,i2)=model.a3;
-%          b3(i1,i2)=model.b3;
-%          c3(i1,i2)=model.c3;
+          a3(i1,i2)=model.a3;
+          b3(i1,i2)=model.b3;
+          c3(i1,i2)=model.c3;
 %          a4(i1,i2)=model.a4;
 %          b4(i1,i2)=model.b4;
 %          c4(i1,i2)=model.c4;
@@ -94,7 +94,7 @@ for i1=1:length(structin)
     fopts.Weights=a1(tg0>0&tg0<tmax)./max(a1(tg0>0&tg0<tmax));
     b1fit=fit([1:length(tg0(tg0>-3&tg0<tmax))]',b1(i1,tg0>-3&tg0<tmax)',h,fopts2);
     b2fit=fit([1:length(tg0(tg0>-3&tg0<tmax))]',b2(i1,tg0>-3&tg0<tmax)',h,fopts2);
-%     b3fit=fit([1:length(tg0(tg0>-3&tg0<tmax))]',b3(i1,tg0>-3&tg0<tmax)',h,fopts2);
+    b3fit=fit([1:length(tg0(tg0>-3&tg0<tmax))]',b3(i1,tg0>-3&tg0<tmax)',h,fopts2);
 %     b4fit=fit([1:length(tg0(tg0>-3&tg0<tmax))]',b4(i1,tg0>-3&tg0<tmax)',h,fopts2);
     m_posfit=fit([1:length(tg0(tg0>-3&tg0<tmax))]',eV(I(i1,tg0>-3&tg0<tmax)),h,fopts2);
     max_pos = m_posfit(1:length(tg0));
@@ -119,13 +119,13 @@ for i1=1:length(structin)
     hold on
     plot(tg0, [b2(i1,:);b2fit(1:length(tg0))'])
     hold on
-%     plot(tg0, [b3(i1,:);b3fit(1:length(tg0))'])
+    plot(tg0, [b3(i1,:);b3fit(1:length(tg0))'])
 %     hold on
 %     plot(tg0, [b4(i1,:);b4fit(1:length(tg0))'])
 %     hold on
     %plot(tg0, eV(I(i1,:)))
     %plot(1:length(tg0(tg0<500e-9)),b2fit(1:length(tg0(tg0<500e-9))))
-    out=[tg0;a1; b1; c1; a2; b2; c2; eV(I)'; m ];
+    out=[tg0;a1; b1; c1; a2; b2; c2; a3; b3; c3;  eV(I)'; m ];
     figure
     plot(tg0, [a1;m]);
     set(gca,'xscale','log')

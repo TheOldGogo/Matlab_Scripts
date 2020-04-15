@@ -15,7 +15,7 @@
 sample='OIDTBR';
 timeoffset=0;
 
-dirname='/home/gorenfjf/Temp_Workspace/DR3 project/DR3_OIDTBR_SD/720nm_excitation/'
+dirname='\\datawaha\ufd\Exchanges\For Julien\Offset paper\data\DR3 project\DR3_OIDTBR_SD\720nm_excitation\'
 fnames=dir(dirname);                                                        % dir lists the files in directory -> return a structure with file names and infos
 
 j=1;
