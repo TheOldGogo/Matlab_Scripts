@@ -6,7 +6,8 @@
 %% 2018 - 06 - 25 JG: accordingly applied the subbackground and zero substraction also to the unsmoothed data
 %% 2018 - 07 - 25 JG: Added the "clearvars - except" option (currently commented line 10) as an alternative to "clear all" (thank you Jafar)
 %% 2019 - 05 - 13 JG: The spectral and temporal boundaries are now entered by actual value instead of pixel number l 157 -> 160 
-%% 2019 - 05 - 13 JG: The time to switch from raw to smoothed data is now oFn a specific line (currently l 130)
+%% 2019 - 05 - 13 JG: The time to switch from raw to smoothed data is now on a specific line (currently l 130)
+%% 2020 - 04 - 15 JG: Now calculating the zero from raw data rather than smooth
 
 %clear all ; 
 %clearvars -except Constr_Spec Ref_Spectra; 
@@ -78,7 +79,8 @@ figure()
 hold all
  for i=1:length(txtfnames)
     
-    V=mean(abs(data_struc(j).smootheddata(data_struc(j).lam>lam(1)&data_struc(j).lam<lam(2),:)));   % average (over lambda I guess) of the given wavelength range
+%    V=mean(abs(data_struc(j).smootheddata(data_struc(j).lam>lam(1)&data_struc(j).lam<lam(2),:)));   % average (over lambda I guess) of the given wavelength range
+    V=mean(abs(data_struc(j).data(data_struc(j).lam>lam(1)&data_struc(j).lam<lam(2),:)));           % same but from the raw data instead of smoothed
     temp_time=data_struc(j).time(data_struc(j).time>t(1)&data_struc(j).time<t(2));                  % take the part of the time within the range defined higher
     V_temp=interp1(data_struc(j).time,V,interp_time);      
     % make the interpolation... to find the zero... But I'm not sure what sense it makes without having substracted the background before
